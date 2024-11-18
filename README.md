@@ -1,4 +1,5 @@
 # Anime Streaming Platform
+![image of site](public/imgs/anime-site-min.png)
 
 ## Overview
 
