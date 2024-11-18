@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Streaming Website</title>
+  
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  
+    <!-- Fork Awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
+      integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+  
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/episodewatch.css">
+
+
+</head>
+
+<body> <!-- HEADER::START -->
+  <header id="main-header">
+    <div class="icons">
+      <i class="fa fa-bars" id="menu-bars"></i>
+    </div>
+
+    <div class="overlay" id="menu-overlay"></div>
+    <div class="side-menu" id="side-menu">
+      <button class="btn" id="menu-close-button"><i class="fa fa-angle-left" aria-hidden="true"></i>Close menu</button>
+
+      <div class="side-menu-icons-container" id="side-menu-icons">
+        <div class="container">
+          <i class="fa fa-users" aria-hidden="true" title="Watch with friends"></i>
+          <p>Watch2gether</p>
+        </div>
+        <div class="container" id = "random-anime" >
+          <i class="fa fa-random" aria-hidden="true" title="Watch random anime"></i>
+          <p>Random</p>
+        </div>
+      </div>
+
+      
+
+
+
+      <button class="btn" id="community-button"><i class="fa fa-comments" aria-hidden="true"></i>Community</button>
+
+      <div class="links">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/animes">Anime List</a></li>
+          <li><a href="#dubbed-anime">Dubbed Anime</a></li>
+          <li><a href="#most-popular">Most Popular</a></li>
+          <li><a href="#movies">Movies</a></li>
+          <li><a href="#tv-series">TV Series</a></li>
+          <li><a href="#ovas">OVAs</a></li>
+          <li><a href="#onas">ONAs</a></li>
+          <li><a href="#specials">Specials</a></li>
+          <li><a href="#events">Events</a></li>
+        </ul>
+      </div>
+      <div class="genre-section">
+        <h1>Search by Genres</h1>
+        <div class="genre-column">
+          <p id="action">Action</p>
+          <p id="adventure">Adventure</p>
+          <p id="martial-arts">Martial Arts</p>
+          <p id="comedy">Comedy</p>
+          <p id="suspense">Suspense</p>
+          <p id="demons">Demons</p>
+          <p id="drama">Drama</p>
+          <p id="ecchi">Ecchi</p>
+          <p id="fantasy">Fantasy</p>
+          <p id="horror">Horror</p>
+        </div>
+
+        <div class="genre-column">
+          <p id="mecha">Mecha</p>
+          <p id="slice-of-life">Slice of Life</p>
+          <p id="isekai">Isekai</p>
+          <p id="idol">Idol</p>
+          <p id="psychological">Psychological</p>
+          <p id="romance">Romance</p>
+          <p id="sci-fi">Sci-Fi</p>
+          <p id="supernatural">Supernatural</p>
+          <p id="mystery">Mystery</p>
+          <p id="magic">Magic</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="/" class="logo"><i class="fa fa-star" aria-hidden="true"></i> Hoshi</a>
+
+    <div class="search-container">
+      <input type="search" id="anime-search" placeholder="Search anime..." oninput="searchAnime()">
+      <ul id="search-results"></ul>
+    </div>
+    
+ 
+    <div class="social-media-text">
+      <p>Join<br>now</p>
+    </div>
+<div class="icons" id="social-media-icons">
+    <i class="fa fa-search" id="search-icon"></i>
+    <i class="fa fa-discord" id="discord-icon" onclick="handleClick('discord')"></i>
+    <i class="fa fa-github" id="github-icon" onclick="handleClick('github')"></i>
+    <i class="fa fa-twitter" id="twitter-icon" onclick="handleClick('twitter')"></i>
+</div>
+<script>
+function handleClick(platform) {
+    switch(platform) {
+        case 'search':
+            break;
+        case 'discord':
+            window.open('https://discord.com/users/960172790802174002', '_blank'); // فتح رابط Discord في نافذة جديدة
+            break;
+        case 'twitter':
+            window.open('https://x.com/ZOX_ZOX1', '_blank'); // فتح رابط Twitter في نافذة جديدة
+            break;
+        case 'github':
+            window.open('https://github.com/ZOXXII', '_blank'); // فتح رابط Twitter في نافذة جديدة
+            break;
+        default:
+            console.log('أيقونة غير معروفة');
+    }
+}
+</script>
+
+    <div class="icons-container" id="c1">
+      <i class="fa fa-users" aria-hidden="true" title="Watch with friends"></i>
+      <p>Watch2gether</p>
+    </div>
+
+    <div class="icons-container" id="c2">
+      <i class="fa fa-random" aria-hidden="true" title="Watch random anime" onclick="openRandomAnime()"></i>
+      <p>Random</p>
+  </div>
+  <script>
+    function openRandomAnime() {
+        // Send a request to the backend to get a random anime
+        fetch('http://localhost:3000/random-anime')  // Adjust URL if backend is hosted elsewhere
+            .then(response => response.json())
+            .then(data => {
+                // Open the random anime's promoLink in a new tab
+                if (data && data.promoLink) {
+                    window.open(data.promoLink, '_blank');
+                } else {
+                    alert('Random anime not found');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching random anime:', error);
+                alert('Error fetching random anime');
+            });
+    }
+    </script>
+
+    <div class="icons-container" id="c3">
+      <i class="fa fa-comments" aria-hidden="true" title="Chat about your favorite shows"></i>
+      <p>Community</p>
+    </div>
+
+    <button class="btn" id="login-button">Login</button>
+  </header>
+  <!-- HEADER::END -->
+
+  <!-- LOGIN-WINDOW::START -->
+  <div class="overlay" id="login-overlay"></div>
+  <div class="login-window" id="login-window">
+    <div class="login-content">
+      <h2>Welcome Back!</h2>
+      <form id="display-form">
+        <label for="email" id="lb-email">email address</label><br>
+        <input type="email" id="email" name="email" autocomplete="off"><br>
+        <label for="password" id="lb-password">password</label><br>
+        <input type="password" id="password" name="password"><br>
+        <input type="checkbox" id="remember-checkbox" name="remember-checkbox">
+        <label for="remember-checkbox">remember me</label>
+        <a id="forgot-password">forgot password?</a><br>
+        <input type="submit" value="login" id="login-submit-button"><br>
+        <label>don't have an account? </label><a id="register-button"> register</a><br>
+      </form>
+      <i id="login-close-button" class="fa fa-window-close"></i>
+    </div>
+  </div>
+  <!-- LOGIN-WINDOW::END -->
+  
+  <div class="episode-viewer">
+    <h2><%= episode ? episode.episodeTitle : 'لا توجد بيانات للحلقة' %></h2>
+
+    <!-- اختيار السيرفر -->
+    <label>اختر السيرفر:</label>
+    <div id="serverButtons">
+        <% if (episode && episode.servers && episode.servers.length > 0) { %>
+            <% episode.servers.forEach(function(server, index) { %>
+                <button 
+                    class="server-btn" 
+                    onclick="changeServer('<%= server.link %>')">
+                    <%= server.name %>
+                </button>
+            <% }); %>
+        <% } else { %>
+            <p>لا توجد خوادم متوفرة</p>
+        <% } %>
+    </div>
+
+    <!-- عرض الفيديو -->
+    <iframe 
+        id="videoFrame" 
+        src="<%= episode && episode.servers.length > 0 ? episode.servers[0].link : '' %>" 
+        width="640" 
+        height="360" 
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
+    <p>مدة الحلقة: <%= episode ? episode.episodeDuration : 'غير متوفرة' %></p>
+
+    <div class="episode-navigation">
+      <% if (previousEpisode) { %>
+          <a href="/anime/<%= anime._id %>/episode/<%= previousEpisode._id %>" class="prev-episode-btn">
+              <i class="fa fa-arrow-left"></i> الحلقة السابقة
+          </a>
+      <% } else { %>
+          <span class="prev-episode-btn disabled">لا توجد حلقة سابقة</span>
+      <% } %>
+
+      <% if (nextEpisode) { %>
+          <a href="/anime/<%= anime._id %>/episode/<%= nextEpisode._id %>" class="next-episode-btn">
+              الحلقة التالية <i class="fa fa-arrow-right"></i>
+          </a>
+      <% } else { %>
+          <span class="next-episode-btn disabled">لا توجد حلقة تالية</span>
+      <% } %>
+    </div>
+
+</div>
+
+<!-- episodes-->
+<div class="episodes-list">
+    <h3>اختر حلقة أخرى</h3>
+    <ul>
+        <% episodes.forEach(function(ep) { %>
+            <li>
+                <a href="/anime/<%= anime._id %>/episode/<%= ep._id %>">
+                    الحلقة <%= ep.episodeNumber %>: <%= ep.episodeTitle %>
+                </a>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+
+
+    <script>function changeServer(link) {
+      const videoFrame = document.getElementById("videoFrame");
+      videoFrame.src = link; // تحديث الرابط
+  }
+  
+  </script>
+    <script src="/javascript/script.js"></script>
+
+</body>
+</html>

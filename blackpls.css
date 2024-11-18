@@ -1,0 +1,45 @@
+/* تغيير خلفية الصفحة إلى أسود والنصوص إلى أبيض */
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* تعديل الحواف والمسافات */
+h2, label, input, button {
+    margin-bottom: 10px;
+}
+
+/* تغيير مظهر الأزرار */
+button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+/* تغيير مظهر الحقول النصية */
+input[type="text"], input[type="number"], input[type="file"], select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    padding: 8px;
+    width: 100%;
+}
+
+/* تغيير لون الحواف عند التفاعل مع الحقول */
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    border-color: #888;
+    outline: none;
+}
+
+/* تغيير مظهر الحقول المختارة */
+input[type="checkbox"], input[type="radio"] {
+    background-color: #333;
+    color: whi
+}
