@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require("cors");
 const multer = require("multer");
 const Article = require("./models/anime");
 
@@ -9,7 +8,6 @@ const port = 3000;
 app.set('view engine', 'ejs');
 app.use(express.static('public')); 
 
-app.use(cors());
 app.use(express.json());
 
 // اتصال بقاعدة البيانات
