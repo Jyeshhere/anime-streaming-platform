@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // اتصال بقاعدة البيانات
-mongoose.connect("mongodb+srv://<URNAME>:<URPASSWORD>@cluster0.21beh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://Anikasu:Anikasu@1103@anikasu-db.a6daguo.mongodb.net/?retryWrites=true&w=majority&appName=Anikasu-DB")
 .then(() => console.log('Connected to MongoDB'))
 .catch(error => console.error("Error connecting to MongoDB:", error));
 
