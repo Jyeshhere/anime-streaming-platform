@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة أنمي</title>
+    <link rel="stylesheet" href="blackpls.css"> <!-- ربط ملف CSS -->
+</head>
+<body>
+
+    <h2>نموذج إضافة أنمي</h2>
+    <form id="animeForm" enctype="multipart/form-data">
+        <input type="text" name="name" id="animeName" placeholder="اسم الأنمي" required>
+        <input type="file" name="imagePath" accept="image/*" required>
+        <input type="text" name="promoLink" placeholder="رابط ترويجي" readonly>
+        
+        <!-- TYPES -->
+        <fieldset>
+            <legend>التصنيف</legend>
+            <label><input type="checkbox" name="type" value="أكشن"> أكشن</label>
+            <label><input type="checkbox" name="type" value="مغامرة"> مغامرة</label>
+            <label><input type="checkbox" name="type" value="خيال علمي"> خيال علمي</label>
+            <label><input type="checkbox" name="type" value="رومانسي"> رومانسي</label>
+            <label><input type="checkbox" name="type" value="كوميديا"> كوميديا</label>
+            <label><input type="checkbox" name="type" value="دراما"> دراما</label>
+            <label><input type="checkbox" name="type" value="غموض"> غموض</label>
+            <label><input type="checkbox" name="type" value="فانتازيا"> فانتازيا</label>
+            <label><input type="checkbox" name="type" value="شريحة من الحياة"> شريحة من الحياة</label>
+            <label><input type="checkbox" name="type" value="رعب"> رعب</label>
+            <label><input type="checkbox" name="type" value="رياضة"> رياضة</label>
+            <label><input type="checkbox" name="type" value="موسيقى"> موسيقى</label>
+            <label><input type="checkbox" name="type" value="تاريخي"> تاريخي</label>
+            <label><input type="checkbox" name="type" value="مدرسي"> مدرسي</label>
+            <label><input type="checkbox" name="type" value="عائلي"> عائلي</label>
+            <label><input type="checkbox" name="type" value="إثارة"> إثارة</label>
+            <label><input type="checkbox" name="type" value="شرطة"> شرطة</label>
+            <label><input type="checkbox" name="type" value="ميكا"> ميكا</label>
+            <label><input type="checkbox" name="type" value="تراجيدي"> تراجيدي</label>
+            <label><input type="checkbox" name="type" value="سايبربانك"> سايبربانك</label>
+            <label><input type="checkbox" name="type" value="سحر"> سحر</label>
+            <label><input type="checkbox" name="type" value="شونين"> شونين</label>
+            <label><input type="checkbox" name="type" value="شوجو"> شوجو</label>
+            <label><input type="checkbox" name="type" value="ياوي"> ياوي</label>
+            <label><input type="checkbox" name="type" value="يوي"> يوي</label>
+            <label><input type="checkbox" name="type" value="سوبرهيرو"> سوبرهيرو</label>
+            <label><input type="checkbox" name="type" value="إثارة نفسية"> إثارة نفسية</label>
+        </fieldset>
+
+
+        <input type="text" name="episodeDuration" placeholder="مدة الحلقة" readonly>
+        <input type="number" name="totalEpisodes" placeholder="عدد الحلقات" readonly>
+        <input type="text" name="season" placeholder="الموسم" readonly>
+        <input type="text" name="source" placeholder="المصدر" readonly>
+        <input type="text" name="latestEpisode" placeholder="آخر حلقة" readonly>
+
+        <input type="checkbox" name="statusOptions" value="متوقف" id="stoped"> <label for="متوقف">stoped</label>
+        <input type="checkbox" name="statusOptions" value="مستمر" id="continy"> <label for="مستمر">continu</label>
+        <input type="checkbox" name="statusOptions" value="مكتمل" id="finished"> <label for="مكتمل">finished</label>
+        <!-- الحقل الخاص بتحديد نوع الأنمي -->
+        <input type="checkbox" name="animeType" value="فلم" id="فلم"> <label for="MOVIE">MOVIE</label>
+        <input type="checkbox" name="animeType" value="اوفا" id="اوفا"> <label for="OVA">OVA</label>
+        <input type="checkbox" name="animeType" value="مسلسل" id="مسلسل"> <label for="TV">TV</label>
+        <input type="checkbox" name="animeType" value="اونا" id="اونا"> <label for="ONA">ONA</label>
+        <input type="checkbox" name="animeType" value="حلقه خاصه" id="حلقه خاصه"> <label for="Special">Special</label>
+        
+        
+
+        <button type="submit">إرسال</button>
+
+    </form>
+
+    <h2>إضافة حلقة لأنمي</h2>
+
+    <!-- اختيار الأنمي -->
+    <label for="animeSelect">اختر الأنمي:</label>
+    <select id="animeSelect">
+        <!-- HERE U WILL SEE ANIMES-->
+    </select>
+
+    <form id="episodeForm">
+        <input type="number" name="episodeNumber" placeholder="رقم الحلقة" required>
+        <input type="text" name="episodeTitle" placeholder="عنوان الحلقة" required>
+        <input type="text" name="episodeDuration" placeholder="مدة الحلقة">
+
+        <h3>السيرفرات</h3>
+        <div id="serversContainer">
+            <div class="server-group">
+                <label>vidmoly: <input type="text" name="servers[vidmoly]" placeholder="رابط السيرفر vidmoly"></label>
+            </div>
+            <div class="server-group">
+                <label>uqload: <input type="text" name="servers[uqload]" placeholder="رابط السيرفر uqload"></label>
+            </div>
+            <div class="server-group">
+                <label>ok.ru: <input type="text" name="servers[ok_ru]" placeholder="رابط السيرفر ok.ru"></label>
+            </div>
+            <div class="server-group">
+                <label>Mp4upload: <input type="text" name="servers[mp4upload]" placeholder="رابط السيرفر Mp4upload"></label>
+            </div>
+            <div class="server-group">
+                <label>Mega: <input type="text" name="servers[mega]" placeholder="رابط السيرفر Mega"></label>
+            </div>
+            <div class="server-group">
+                <label>Sendvid: <input type="text" name="servers[sendvid]" placeholder="رابط السيرفر Sendvid"></label>
+            </div>
+            <div class="server-group">
+                <label>ok.ru FHD: <input type="text" name="servers[ok_ru_fhd]" placeholder="رابط السيرفر ok.ru FHD"></label>
+            </div>
+            <div class="server-group">
+                <label>Mp4upload FHD: <input type="text" name="servers[mp4upload_fhd]" placeholder="رابط السيرفر Mp4upload FHD"></label>
+            </div>
+            <div class="server-group">
+                <label>Mega FHD: <input type="text" name="servers[mega_fhd]" placeholder="رابط السيرفر Mega FHD"></label>
+            </div>
+            <div class="server-group">
+                <label>ok.ru SD: <input type="text" name="servers[ok_ru_sd]" placeholder="رابط السيرفر ok.ru SD"></label>
+            </div>
+            <div class="server-group">
+                <label>Mp4upload SD: <input type="text" name="servers[mp4upload_sd]" placeholder="رابط السيرفر Mp4upload SD"></label>
+            </div>
+            <div class="server-group">
+                <label>Mega SD: <input type="text" name="servers[mega_sd]" placeholder="رابط السيرفر Mega SD"></label>
+            </div>
+        </div>
+
+        <button type="submit">إضافة الحلقة</button>
+    </form>
+
+    <h2>قائمة الأنميات</h2>
+    <ul id="animeList"></ul>
+
+    <script>
+        const form = document.getElementById("animeForm");
+        const animeNameField = document.getElementById("animeName");
+
+        animeNameField.addEventListener("change", async function(event) {
+            const animeName = event.target.value; 
+
+            if (animeName) {
+                try {
+                    const response = await fetch(`https://api.jikan.moe/v4/anime?q=${animeName}&limit=1`);
+                    const data = await response.json();
+
+                    if (data.data && data.data.length > 0) {
+                        const animeData = data.data[0];
+
+                        const translateData = {
+                            'promoLink': animeData.url || 'لا يوجد رابط ترويجي',
+                            'status': animeData.status || 'غير محدد',
+                            'animeType': animeData.type || 'غير محدد',
+                            'episodeDuration': animeData.duration || 'غير محدد',
+                            'totalEpisodes': animeData.episodes || 'غير محدد',
+                            'season': animeData.season || 'غير محدد',
+                            'source': animeData.source || 'غير محدد',
+                            'latestEpisode': animeData.episodes ? `الحلقة ${animeData.episodes}` : 'غير متوفر'
+
+                        };
+
+                        // تعبئة الحقول في النموذج
+                        document.querySelector("input[name='promoLink']").value = translateData.promoLink;
+                        document.querySelector("input[name='episodeDuration']").value = translateData.episodeDuration;
+                        document.querySelector("input[name='totalEpisodes']").value = translateData.totalEpisodes;
+                        document.querySelector("input[name='season']").value = translateData.season;
+                        document.querySelector("input[name='source']").value = translateData.source;
+                        document.querySelector("input[name='latestEpisode']").value = translateData.latestEpisode;  
+
+                        //TRANSLAT FOR U ARABIC /ENLISGH
+                        const genreTranslations = {
+                            "Action": "أكشن",
+                            "Adventure": "مغامرة",
+                            "Sci-Fi": "خيال علمي",
+                            "Romance": "رومانسي",
+                            "Comedy": "كوميديا",
+                            "Drama": "دراما",
+                            "Mystery": "غموض",
+                            "Fantasy": "فانتازيا",
+                            "Slice of Life": "شريحة من الحياة",
+                            "Horror": "رعب",
+                            "Sports": "رياضة",
+                            "Music": "موسيقى",
+                            "Historical": "تاريخي",
+                            "School": "مدرسي",
+                            "Family": "عائلي",
+                            "Thriller": "إثارة",
+                            "Police": "شرطة",
+                            "Mecha": "ميكا",
+                            "Tragedy": "تراجيدي",
+                            "Cyberpunk": "سايبربانك",
+                            "Magic": "سحر",
+                            "Shounen": "شونين",
+                            "Shoujo": "شوجو",
+                            "Yaoi": "ياوي",
+                            "Yuri": "يوي",
+                            "Superhero": "سوبرهيرو",
+                            "Psychological Thriller": "إثارة نفسية"
+                        };
+                        const animeepisode = document.querySelector("#animeEpisode");
+                        const animemovie = document.querySelector("#animeMovie");
+
+                        console.log(animeData.type);
+                        if (animeData.type === "OVA") {
+                        document.querySelector("input[name='animeType'][value='اوفا']").checked = true;
+                    } else if (animeData.type === "Movie") {
+                        document.querySelector("input[name='animeType'][value='فلم']").checked = true;
+                    } else if (animeData.type === "TV") {
+                        document.querySelector("input[name='animeType'][value='مسلسل']").checked = true;
+                    } else if (animeData.type === "ONA") {
+                        document.querySelector("input[name='animeType'][value='اونا']").checked = true;
+                    } else if (animeData.type === "Special") {
+                        document.querySelector("input[name='animeType'][value='حلقه خاصه']").checked = true;
+                    }
+
+
+                        console.log(animeData.status)
+                        if (animeData.status === "Finished Airing") {
+                            document.querySelector("input[name='statusOptions'][value='مكتمل']").checked = true;
+                        } else if (animeData.status === "Movie") {
+                            document.querySelector("input[name='statusOptions'][value='مستمر']").checked = true;
+                        } else if (animeData.status === "TV") {
+                            document.querySelector("input[name='statusOptions'][value='متوقف']").checked = true;
+                        }
+
+
+                        const types = animeData.genres.map(genre => genre.name); //LIKE [ "Action", "Comedy"]
+
+                        form.querySelectorAll("input[name='type']").forEach(checkbox => {
+                            const translatedGenre = genreTranslations[checkbox.value]; // ترجمة التصنيف
+                            // تحقق من أن التصنيف المسترجع يتوافق مع التصنيفات في الـ checkbox
+                            if (types.includes(checkbox.value) || types.includes(Object.keys(genreTranslations).find(key => genreTranslations[key] === checkbox.value))) {
+                                checkbox.checked = true;
+                            } else {
+                                checkbox.checked = false;
+                            }
+                        });
+                    } else {
+                        console.log("لم يتم العثور على الأنمي.");
+                    }
+                } catch (error) {
+                    console.error("Error fetching anime data:", error);
+                }
+            }
+        });
+
+        // عند إرسال نموذج الأنمي
+        form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const selectedTypes = [];
+
+    // جمع جميع التصنيفات المحددة
+    form.querySelectorAll("input[name='type']:checked").forEach(checkbox => {
+        selectedTypes.push(checkbox.value);
+    });
+
+    // جمع بيانات السيرفرات
+    const servers = {};
+    document.querySelectorAll("#serversContainer input").forEach(input => {
+        const serverNameMatch = input.name.match(/\[([^\]]+)\]/);
+        if (serverNameMatch) {
+            const serverName = serverNameMatch[1];
+            const serverLink = input.value.trim();
+            if (serverLink) {
+                servers[serverName] = serverLink;
+            }
+        }
+    });
+
+    // تأكد من جمع "animeType" بشكل صحيح:
+// جمع "animeType" بشكل صحيح:
+const statusValue = formData.get("statusOptions") || "غير محدد";  // تعيين قيمة افتراضية إذا كانت فارغة
+const animeTypeValue = formData.get("animeType") || "غير محدد";  // تعيين قيمة افتراضية إذا كانت فارغة
+
+// إنشاء FormData جديد لتمرير البيانات بما في ذلك الصورة
+const formDataToSend = new FormData();
+
+// إضافة الحقول النصية إلى FormData
+formDataToSend.append("name", formData.get("name"));
+formDataToSend.append("promoLink", formData.get("promoLink"));
+formDataToSend.append("type", JSON.stringify(selectedTypes)); 
+formDataToSend.append("status", statusValue);
+formDataToSend.append("episodeDuration", formData.get("episodeDuration"));
+formDataToSend.append("totalEpisodes", formData.get("totalEpisodes"));
+formDataToSend.append("animeType", animeTypeValue);
+formDataToSend.append("season", formData.get("season"));
+formDataToSend.append("source", formData.get("source"));
+formDataToSend.append("latestEpisode", formData.get("latestEpisode"));
+formDataToSend.append("servers", JSON.stringify(servers)); // إذا كنت تريد إرسال السيرفرات كـ JSON
+
+// إضافة الصورة إلى FormData إذا كانت موجودة
+const imageFile = formData.get("imagePath");
+if (imageFile) {
+    formDataToSend.append("imagePath", imageFile);
+}
+
+// إرسال البيانات باستخدام FormData
+try {
+    const response = await fetch("http://localhost:3000/anime", {
+        method: 'POST',
+        body: formDataToSend, // استخدم FormData هنا
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log('تم إضافة الأنمي بنجاح:', data);
+        alert("تم إضافة الأنمي بنجاح!");
+    } else {
+        const errorText = await response.text();
+        console.error('حدث خطأ أثناء إرسال البيانات:', errorText);
+    }
+} catch (error) {
+    console.error('حدث خطأ أثناء إرسال البيانات:', error);
+    alert("حدث خطأ غير متوقع.");
+}
+
+});
+
+        // جلب قائمة الأنميات وعرضها في القائمة المنسدلة
+        async function fetchAnimeList() {
+            try {
+                const response = await fetch('https://anime-streaming-platform.onrender.com/anime');
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    const animeSelect = document.getElementById('animeSelect');
+                    data.forEach(anime => {
+                        const option = document.createElement('option');
+                        option.value = anime._id; // استخدام معرف الأنمي كقيمة
+                        option.textContent = anime.name; // عرض اسم الأنمي
+                        animeSelect.appendChild(option);
+                    });
+                } else {
+                    console.error("لا توجد أنميات متاحة.");
+                }
+            } catch (error) {
+                console.error("حدث خطأ أثناء استرجاع الأنميات:", error);
+            }
+        }
+
+        // إرسال بيانات الحلقة إلى الخادم
+        async function addEpisode(event) {
+            event.preventDefault();
+
+            const animeId = document.getElementById("animeSelect").value; // الحصول على المعرف من القائمة
+            const episodeForm = document.getElementById("episodeForm");
+            const formData = new FormData(episodeForm);
+
+            const body = {
+                episodeNumber: formData.get("episodeNumber"),
+                episodeTitle: formData.get("episodeTitle"),
+                episodeDuration: formData.get("episodeDuration"),
+                servers: [],
+            };
+
+            // جمع بيانات السيرفرات
+            const serverNames = [
+                "vidmoly",
+                "uqload",
+                "ok_ru",
+                "mp4upload",
+                "mega",
+                "sendvid",
+                "ok_ru_fhd",
+                "mp4upload_fhd",
+                "mega_fhd",
+                "ok_ru_sd",
+                "mp4upload_sd",
+                "mega_sd"
+            ];
+
+            serverNames.forEach(serverName => {
+                const link = formData.get(`servers[${serverName}]`);
+                if (link && link.trim() !== "") {
+                    body.servers.push({
+                        name: serverName,
+                        link: link.trim()
+                    });
+                }
+            });
+
+            // التحقق من أن هناك سيرفر واحد على الأقل
+            if (body.servers.length === 0) {
+                alert("يرجى إدخال رابط على الأقل لسيرفر واحد.");
+                return;
+            }
+
+            // إرسال البيانات إلى الخادم
+            try {
+                const response = await fetch(`https://anime-streaming-platform.onrender.com/anime/${animeId}/episodes`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(body),
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`فشل إضافة الحلقة: ${errorText}`);
+                }
+
+                const data = await response.json();
+                console.log("تم إضافة الحلقة:", data);
+
+                // إعادة تحميل الصفحة أو تحديثها ديناميكيًا
+            } catch (error) {
+                console.error("خطأ في إضافة الحلقة:", error);
+                alert("حدث خطأ أثناء إضافة الحلقة.");
+            }
+        }
+
+        // ربط نموذج الحلقات بدالة الإرسال
+        document.getElementById('episodeForm').addEventListener('submit', addEpisode);
+
+        // استدعاء دالة استرجاع الأنميات عند تحميل الصفحة
+        window.onload = fetchAnimeList;
+    </script>
+</body>
+</html>
